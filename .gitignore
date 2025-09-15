@@ -16,3 +16,7 @@ __pycache__/
 *.log
 
 .idea/
+
+media/
+
+db.sqlite3
