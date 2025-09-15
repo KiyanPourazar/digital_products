@@ -1,4 +1,18 @@
-# created by virtualenv automatically
+# Mac OS system files
 .DS_Store
-.idea/
+
+# Virtualenv
 venv/
+ENV/
+env/
+.venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Other common stuff
+*.log
+
+.idea/
