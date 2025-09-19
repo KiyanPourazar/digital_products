@@ -4,19 +4,20 @@ from utils.validators import validate_package_price
 
 
 class Package(models.Model):
-    title = models.CharField(_('package title'), max_length=100)
-    sku = models.CharField(_('SKU'), max_length=50, unique=True)
-    description = models.TextField(_('description'), blank=True, null=True)
+    title = models.CharField(max_length=255)
+    sku = models.CharField(max_length=100, unique=True)
+    description = models.TextField(blank=True, null=True)
+    avatar = models.ImageField(upload_to='packages/', null=True, blank=True)  # 👈 اضافه شد
     price = models.DecimalField(
         _('price'),
         max_digits=10,
         decimal_places=2,
         validators=[validate_package_price]
     )
-    duration = models.PositiveIntegerField(_('duration (days)'))
-    is_enable = models.BooleanField(_('is enable'), default=True)
-
-    created_time = models.DateTimeField(_('created time'), auto_now_add=True)
+    duration = models.PositiveIntegerField(help_text="Duration in days")
+    is_enable = models.BooleanField(default=True)
+    created_time = models.DateTimeField(auto_now_add=True)
+    updated_time = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return f"{self.title} - {self.price} T"
